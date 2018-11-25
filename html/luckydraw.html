@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>luckyDraw</title>
+	<link rel="stylesheet" type="text/css" href="../css/lucky.css">
+</head>
+<body style="padding: .2rem .1rem">
+   <div class="section-body">
+    <div class="section-body-inner">
+      <ul class="slots">
+      </ul>
+    </div>
+   </div> 
+   <div class="prize-action">
+	   <button id="start" class="btn">开始</button>
+	   <button id="end" class="btn">结束</button>
+	   <button id="rotate" class="btn">旋转</button>
+   </div>
+<script type='text/javascript' src='../js/jquery.min.js'></script>
+<script type="text/javascript" src='../js/rem.js'></script>
+<script type="text/javascript" src='../js/luckydraw.js'></script>
+<script type='text/javascript'>
+   $(function(){
+   	// 初始化组件
+   	init();
+	// 开始抽奖
+	$('#start').on('click',function(){
+       time=startDraw(30);
+	});
+	// 结束抽奖
+	$('#end').on('click',function(){
+		//第一个参数传递句柄
+		//第二个参数传递中奖号码
+		//第三个参数回调函数
+	   	endDraw(time,'');
+	 });
+    
+ //    //旋转 
+	$("#rotate").on('click',function(){
+		$('.slot').css({
+			transform:'rotateY(180deg)',
+			transition:'all .6s'
+
+		});
+		var back=`<span class='imgWrapper'>
+            <img src="../images/bronze-prize.svg">
+          </span>
+          `;
+		$('.slot-number').empty().append(back);
+	})
+
+   })
+</script>
+</body>
+</html>
